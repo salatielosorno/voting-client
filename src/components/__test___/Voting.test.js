@@ -1,45 +1,23 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
-//import { render, unmountComponentAtNode } from 'react-dom';
-import { act } from "react-dom/test-utils";
+import { render, screen, fireEvent } from '@testing-library/react';
 
 import Voting from '../Voting';
 
-// In your test setup file
-globalThis.IS_REACT_ACT_ENVIRONMENT = true;
-
-let root = null;
-let container = null;
-
-beforeEach(() => {
-    container = document.createElement('div');
-    
-    act(() => {
-        root = createRoot(container);
-    })
-})
-
-afterEach(() => {
-    act(() => {
-        root.unmount();
-    })
-    
-    container = null;
-})
 
 it('renders a pair of buttons', () => {
-    act(() => {
-        root.render(<Voting pair={["Trainspotting", "28 Days Later"]}/>); 
-    });
+    let votedWith;
+    const vote = (entry) => votedWith = entry;
 
-    expect(container.querySelector('button:nth-child(1)').textContent).toBe('Trainspotting');
-    expect(container.querySelector('button:nth-child(2)').textContent).toBe('28 Days Later');
+    render(<Voting pair={["Trainspotting", "28 Days Later"]} vote={vote} />);
+    expect(screen.getByText('Trainspotting')).toBeInTheDocument();
+    expect(screen.getByText('28 Days Later')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('Trainspotting'));
+
+    expect(votedWith).toBe('Trainspotting');
 });
 
 it('renders a pair of buttons', () => {
-    act(() => {
-        root.render(<Voting pair={["Dragon ball", "28 Days Later"]}/>);
-    });
-
-    expect(container.querySelector('button:nth-child(1)').textContent).toBe('Dragon ball');
+    render(<Voting pair={["Dragon ball", "28 Days Later"]} />);
+    expect(screen.getByText('Dragon ball')).toBeInTheDocument();
 });

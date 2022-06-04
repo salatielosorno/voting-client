@@ -6,7 +6,7 @@ import Voting from './components/Voting';
 const pair = ['Trainspotting', '28 Days Later'];
 function App() {
   return (
-    <Voting pair={pair} />
+    <Voting pair={pair} winner='Trainspotting' />
   );
 }
 
