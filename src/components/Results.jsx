@@ -1,7 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Winner from './Winner';
 
-export default function Results({ pair, tally, next, winner }) {
+export const Results = ({ pair, tally, next, winner }) => {
     const getPair = () => {
         return pair || [];
     }
@@ -36,3 +38,13 @@ export default function Results({ pair, tally, next, winner }) {
         }
     </>
 }
+
+function mapStateToProps(state) {
+    return {
+      pair: state['voting'].getIn(['vote', 'pair']),
+      tally: state['voting'].getIn(['vote', 'tally']),
+      winner: state['voting'].get('winner')
+    }
+  }
+  
+  export const ResultsContainer = connect(mapStateToProps)(Results);

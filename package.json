@@ -9,8 +9,11 @@
     "immutable": "^4.1.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "redux": "^4.2.0",
+    "socket.io-client": "^1.7.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -38,6 +41,9 @@
     ]
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-immutable": "^1.6.0",
+    "mocha": "^10.0.0",
     "react-test-renderer": "^18.1.0"
   }
 }

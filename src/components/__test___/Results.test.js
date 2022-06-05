@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { List, Map } from 'immutable';
 
-import Results from '../Results';
+import { Results } from '../Results';
 
 describe('Results', () => {
 
@@ -39,7 +39,7 @@ describe('Results', () => {
                 pair={["Trainspotting", "28 Days Later"]}
                 tally={Map()} />
         );
-        
+
         expect(screen.getByText('Winner is Trainspotting!')).toBeInTheDocument();
     });
 });

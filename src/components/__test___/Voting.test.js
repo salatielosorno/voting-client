@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 
-import {List} from 'immutable';
+import { List } from 'immutable';
 
-import Voting from '../Voting';
+import { Voting } from '../Voting';
 
 it('renders a pair of buttons - fire click', () => {
     let votedWith;
@@ -56,12 +56,12 @@ it('renders as a pure component', () => {
 
     render(<Voting pair={pair} />)
     expect(screen.getByText('Trainspotting')).toBeInTheDocument();
-    
+
 });
 
 it('does update DOM when prop changes', () => {
     const pair = List.of('Trainspotting', '28 Days Later');
-    
+
     render(<Voting pair={pair} />)
     expect(screen.getByText('Trainspotting')).toBeInTheDocument();
 
