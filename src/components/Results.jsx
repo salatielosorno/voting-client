@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import * as actionCreators from '../action_creators';
 import Winner from './Winner';
 
 export const Results = ({ pair, tally, next, winner }) => {
@@ -9,8 +10,9 @@ export const Results = ({ pair, tally, next, winner }) => {
     }
 
     const getVotes = (entry) => {
-        if (tally && tally.has(entry)) {
-            return tally.get(entry);
+        console.log('TALLY >>', tally)
+        if (tally && tally.hasOwnProperty(entry)) {
+            return tally[entry]//tally.get(entry);
         }
         return 0;
     };
@@ -47,4 +49,4 @@ function mapStateToProps(state) {
     }
   }
   
-  export const ResultsContainer = connect(mapStateToProps)(Results);
+  export const ResultsContainer = connect(mapStateToProps, actionCreators)(Results);
