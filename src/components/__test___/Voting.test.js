@@ -1,4 +1,3 @@
-import Reac from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import {List} from 'immutable';
@@ -68,6 +67,6 @@ it('does update DOM when prop changes', () => {
 
     const newPair = pair.set(0, 'Sunshine');
 
-    render(<Voting pair={newPair} />)
+    render(<Voting pair={newPair} />);
     expect(screen.getByText('Sunshine')).toBeInTheDocument();
 });

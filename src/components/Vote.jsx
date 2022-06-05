@@ -16,7 +16,7 @@ export default function Vote({ pair, vote, hasVoted  }) {
             <button key={idx}
                 disabled={isDisabled()}
                 onClick={() => vote(entry)}>
-                <span> hasVoted {hasVoted}</span>
+                {/*<span> hasVoted {hasVoted}</span>*/}
                 <h1>{entry}</h1>
                 {hasVotedFor(entry) ?
                     <div className="label">Voted</div> :
