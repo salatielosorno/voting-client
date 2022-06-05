@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import Winner from "./Winner";
 import Vote from "./Vote";
+import * as actionCreators from '../action_creators';
 
 export const Voting = ({ pair, vote, hasVoted, winner }) => {
     return <div className="voting">
@@ -16,8 +17,9 @@ export const Voting = ({ pair, vote, hasVoted, winner }) => {
 function mapStateToProps(state) {
     return {
         pair: state['voting'].getIn(['vote', 'pair']),
-        winner: state['voting'].get('winner')
+        hasVoted: state['voting'].get('hasVoted'),
+        winner: state['voting'].get('winner'),
     };
 }
 
-export const VotingContainer = connect(mapStateToProps)(Voting);
+export const VotingContainer = connect(mapStateToProps, actionCreators)(Voting);
